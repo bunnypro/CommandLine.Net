@@ -1,4 +1,5 @@
 using System;
+using Bunnypro.CommandLine.Commands;
 
 namespace Bunnypro.CommandLine.Exceptions
 {
