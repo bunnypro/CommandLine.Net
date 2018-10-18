@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Bunnypro.CommandLine.Commands.InternalExceptions;
+using Bunnypro.CommandLine.Commands.Reflection;
 
-namespace Bunnypro.CommandLine.Commands.Reflection
+namespace Bunnypro.CommandLine.Commands
 {
     public static class CommandValidator
     {
