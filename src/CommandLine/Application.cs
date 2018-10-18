@@ -18,11 +18,11 @@ namespace Bunnypro.CommandLine
 
         public int Run(IEnumerable<string> args)
         {
-            var names = new List<string> {_name};
+            var names = new List<string> { _name };
             var command = _root;
             var filteredArgs = args.ToList();
 
-            while (filteredArgs.Count > 0 && !filteredArgs[0].StartsWith("-"))
+            while (filteredArgs.Any() && !filteredArgs[0].StartsWith("-"))
             {
                 var child = filteredArgs[0];
                 if (!command.Commands.ContainsKey(child))
@@ -135,7 +135,7 @@ namespace Bunnypro.CommandLine
                 options.Add(option, values);
             }
             else
-                values = (List<string>) options[option];
+                values = (List<string>)options[option];
 
             var optionValue = inputArgs[argIndex];
             inputArgs.Remove(optionValue);
@@ -146,7 +146,7 @@ namespace Bunnypro.CommandLine
         {
             var argCount = 0;
             var commandArguments = command.Arguments.ToList();
-            while (inputArgs.Count > 0)
+            while (inputArgs.Any())
             {
                 if (commandArguments.Count < argCount) throw new UnexpectedArgumentsException(inputArgs);
                 var argument = commandArguments[argCount];

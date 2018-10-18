@@ -33,13 +33,13 @@ namespace Bunnypro.CommandLine
             Console.WriteLine($"\t{Description}");
             var usage = "";
 
-            if (Commands.Count > 0)
+            if (Commands.Any())
                 usage += " [command]";
-            
-            if (Options.Count > 0)
+
+            if (Options.Any())
                 usage += " [options]";
 
-            if (Arguments.Count > 0)
+            if (Arguments.Any())
             {
                 usage += Arguments.Aggregate("", (str, a) =>
                 {
@@ -47,10 +47,10 @@ namespace Bunnypro.CommandLine
                     return str;
                 });
             }
-            
+
             Console.WriteLine($"\nUsage: {command}{usage}");
 
-            if (Commands.Count > 0)
+            if (Commands.Any())
             {
                 Console.WriteLine("\nCommand:");
                 foreach (var c in Commands)
@@ -59,7 +59,7 @@ namespace Bunnypro.CommandLine
                 }
             }
 
-            if (Arguments.Count > 0)
+            if (Arguments.Any())
             {
                 Console.WriteLine("\nArguments:");
                 foreach (var argument in Arguments)
@@ -68,7 +68,7 @@ namespace Bunnypro.CommandLine
                 }
             }
 
-            if (Options.Count > 0)
+            if (Options.Any())
             {
                 Console.WriteLine("\nOptions:");
                 foreach (var option in Options)
