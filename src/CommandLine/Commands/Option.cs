@@ -1,6 +1,6 @@
 using System;
 
-namespace Bunnypro.CommandLine
+namespace Bunnypro.CommandLine.Commands
 {
     public sealed class Option : IEquatable<Option>
     {
@@ -22,8 +22,7 @@ namespace Bunnypro.CommandLine
             set
             {
                 _multiValue = value;
-
-                if (_multiValue) AcceptValue = true;
+                if (value) AcceptValue = true;
             }
         }
 
