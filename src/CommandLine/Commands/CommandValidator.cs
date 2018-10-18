@@ -6,7 +6,7 @@ using Bunnypro.CommandLine.Commands.Reflection;
 
 namespace Bunnypro.CommandLine.Commands
 {
-    public static class CommandValidator
+    internal static class CommandValidator
     {
         public static readonly IEnumerable<Type> AllowedMethodParameterTypes = new[]
         {
