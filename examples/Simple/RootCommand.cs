@@ -23,9 +23,12 @@ namespace Bunnypro.CommandLine.Examples.Simple
 
         protected override int ExecuteCommand(IDictionary<Option, object> options, IDictionary<Argument, object> arguments)
         {
-            
-            Console.WriteLine(JsonConvert.SerializeObject(options, Formatting.Indented));
-            Console.WriteLine(JsonConvert.SerializeObject(arguments, Formatting.Indented));
+            var args = new Dictionary<string, object>
+            {
+                {"option", options},
+                {"arguments", arguments}
+            };
+            Console.WriteLine(JsonConvert.SerializeObject(args, Formatting.Indented));
             return 0;
         }
     }
