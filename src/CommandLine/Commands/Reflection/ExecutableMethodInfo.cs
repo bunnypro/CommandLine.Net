@@ -36,5 +36,10 @@ namespace Bunnypro.CommandLine.Commands.Reflection
 
             return Parameters.Count() == other.Parameters.Count();
         }
+
+        public int Invoke(object[] parameters)
+        {
+            return (int) ExecutableMethod.Invoke(Command, parameters);
+        }
     }
 }
