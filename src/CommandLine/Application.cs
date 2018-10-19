@@ -54,7 +54,6 @@ namespace Bunnypro.CommandLine
                 }
             }
 
-            return command.ShowHelp(names);
         }
     }
 }

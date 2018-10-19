@@ -17,12 +17,5 @@ namespace Bunnypro.CommandLine.Commands
             CommandValidator.Validate(command);
             Commands.Add(name, command);
         }
-
-        public virtual int ShowHelp(IEnumerable<string> names)
-        {
-            var commandName = string.Join(" ", names);
-            new CommandHelp(commandName, this).Print();
-            return 1;
-        }
     }
 }
