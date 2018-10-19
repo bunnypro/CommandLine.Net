@@ -52,7 +52,7 @@ namespace Bunnypro.CommandLine.Commands
                     throw new ExecutableMethodParameterOrderException(method);
                     
                 if (method.IsAcceptOptions && !command.Options.Any())
-                    throw new UnexpectedOptionsParameter(method);
+                    throw new UndefinedCommandOptionsException(method);
                 
                 if (method.IsAcceptOptions && method.Parameters.Count(p => p.IsOptions) > 1)
                     throw new MultipleOptionsDefinitionException(method);

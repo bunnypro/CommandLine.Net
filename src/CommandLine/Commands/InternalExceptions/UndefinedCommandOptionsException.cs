@@ -3,11 +3,11 @@ using Bunnypro.CommandLine.Commands.Reflection;
 
 namespace Bunnypro.CommandLine.Commands.InternalExceptions
 {
-    internal sealed class UnexpectedOptionsParameter : Exception
+    internal sealed class UndefinedCommandOptionsException : Exception
     {
         public ExecutableMethodInfo Method { get; }
 
-        public UnexpectedOptionsParameter(ExecutableMethodInfo method)
+        public UndefinedCommandOptionsException(ExecutableMethodInfo method)
         {
             Method = method;
         }
