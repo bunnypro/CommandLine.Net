@@ -55,7 +55,7 @@ namespace Bunnypro.CommandLine.Commands
                     throw new UnexpectedOptionsParameter(method);
                 
                 if (method.IsAcceptOptions && method.Parameters.Count(p => p.IsOptions) > 1)
-                    throw new MultipleCommandOptionDefinitionException(method);
+                    throw new MultipleOptionsDefinitionException(method);
 
                 foreach (var parameter in method.Parameters)
                 {
