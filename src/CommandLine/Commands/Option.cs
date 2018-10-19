@@ -14,15 +14,16 @@ namespace Bunnypro.CommandLine.Commands
         public string Name { get; }
         public char? ShortName { get; set; }
         public string Description { get; set; } = "No Description";
-        public bool AcceptValue { get; set; }
+        
+        public bool IsAcceptValue { get; set; }
 
         public bool MultiValue
         {
-            get => _multiValue && AcceptValue;
+            get => _multiValue && IsAcceptValue;
             set
             {
                 _multiValue = value;
-                if (value) AcceptValue = true;
+                if (value) IsAcceptValue = true;
             }
         }
 
