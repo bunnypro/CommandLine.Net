@@ -36,7 +36,6 @@ namespace Bunnypro.CommandLine
             }
 
             var commandInfo = new CommandInfo(command);
-            if (!commandInfo.HasExecutableMethod) throw new Exception("Command cannot be executed.");
 
             if (commandArgs.Any())
             {
