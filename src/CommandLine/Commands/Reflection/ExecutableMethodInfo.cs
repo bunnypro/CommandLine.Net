@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -39,7 +40,7 @@ namespace Bunnypro.CommandLine.Commands.Reflection
 
         public int Invoke(object[] parameters)
         {
-            return (int) ExecutableMethod.Invoke(Command, parameters);
+            return (int) (ExecutableMethod.Invoke(Command, parameters) ?? 0);
         }
     }
 }

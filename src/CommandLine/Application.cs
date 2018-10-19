@@ -38,6 +38,22 @@ namespace Bunnypro.CommandLine
             var commandInfo = new CommandInfo(command);
             if (!commandInfo.HasExecutableMethod) throw new Exception("Command cannot be executed.");
 
+            if (commandArgs.Any())
+            {
+                try
+                {
+                    var method = commandInfo.FindMatchExecutableMethodInfo(commandArgs, out var parameters);
+                    
+                    if (method != null)
+                    {
+                        return method.Invoke(parameters);
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid Argument Type.");
+                }
+            }
 
             return command.ShowHelp(names);
         }
