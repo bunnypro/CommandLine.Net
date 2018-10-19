@@ -2,11 +2,11 @@ using System;
 
 namespace Bunnypro.CommandLine.Commands.InternalExceptions
 {
-    internal sealed class ExecutionMethodConflictException : Exception
+    internal sealed class ExecutableMethodConflictException : Exception
     {
         public Command Command { get; }
 
-        public ExecutionMethodConflictException(Command command)
+        public ExecutableMethodConflictException(Command command)
         {
             Command = command;
         }

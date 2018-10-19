@@ -23,7 +23,7 @@ namespace Bunnypro.CommandLine.Commands
             {
                 Validate(command);
             }
-            catch (ExecutionMethodConflictException e)
+            catch (ExecutableMethodConflictException e)
             {
                 Console.WriteLine($"{e.Command.GetType().Name} has method conflict");
                 throw;
@@ -41,15 +41,15 @@ namespace Bunnypro.CommandLine.Commands
             var reflection = new CommandInfo(command);
 
             if (!reflection.HasExecutableMethod)
-                throw new MissingExecutionMethodException(command);
+                throw new MissingExecutableMethodException(command);
 
             if (reflection.HasExecutableMethodConflict)
-                throw new ExecutionMethodConflictException(command);
+                throw new ExecutableMethodConflictException(command);
 
             foreach (var method in reflection.ExecutableMethods)
             {
                 if (method.IsAcceptOptions && !method.Parameters.First().IsOptions)
-                    throw new ExecutionMethodParameterOrderException(method);
+                    throw new ExecutableMethodParameterOrderException(method);
                     
                 if (method.IsAcceptOptions && !command.Options.Any())
                     throw new UnexpectedOptionsParameter(method);
