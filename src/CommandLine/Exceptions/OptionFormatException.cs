@@ -1,8 +1,6 @@
-using System;
-
 namespace Bunnypro.CommandLine.Exceptions
 {
-    public sealed class OptionFormatException : Exception
+    public sealed class OptionFormatException : CommandRuntimeException
     {
         public string Name { get; }
 

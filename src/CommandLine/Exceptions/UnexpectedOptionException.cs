@@ -1,8 +1,6 @@
-using System;
-
 namespace Bunnypro.CommandLine.Exceptions
 {
-    public sealed class UnexpectedOptionException : Exception
+    public sealed class UnexpectedOptionException : CommandRuntimeException
     {
         public string Name { get; }
 

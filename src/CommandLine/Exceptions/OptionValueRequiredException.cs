@@ -1,9 +1,8 @@
-using System;
 using Bunnypro.CommandLine.Commands;
 
 namespace Bunnypro.CommandLine.Exceptions
 {
-    public sealed class OptionValueRequiredException : Exception
+    public sealed class OptionValueRequiredException : CommandRuntimeException
     {
         public Option Option { get; }
 
