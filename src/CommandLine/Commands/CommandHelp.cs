@@ -22,11 +22,21 @@ namespace Bunnypro.CommandLine.Commands
             Console.WriteLine($"Show help for: {_name}");
             Console.WriteLine($"\tDescription: {_command.Description}");
             Console.WriteLine();
+            
             PrintUsage();
             Console.WriteLine();
-            PrintCommands();
-            Console.WriteLine();
-            PrintOptions();
+            
+            if (_command.Commands.Any())
+            {
+                PrintCommands();
+                Console.WriteLine();
+            }
+
+            if (_command.Options.Any())
+            {
+                PrintOptions();
+                Console.WriteLine();
+            }
         }
 
         public void PrintUsage()
@@ -41,7 +51,7 @@ namespace Bunnypro.CommandLine.Commands
                 
                 args += method.Arguments.Aggregate("", (argument, parameter) =>
                 {
-                    argument += $" {{{parameter.Name}:{parameter.TypeName}}}";
+                    argument += $" {{({parameter.TypeName}) {parameter.Name}}}";
 
                     return argument;
                 });
@@ -55,8 +65,6 @@ namespace Bunnypro.CommandLine.Commands
 
         public void PrintCommands()
         {
-            if (!_command.Commands.Any()) return;
-
             Console.WriteLine("Commands");
 
             foreach (var command in _command.Commands)
@@ -67,8 +75,6 @@ namespace Bunnypro.CommandLine.Commands
 
         public void PrintOptions()
         {
-            if (!_command.Options.Any()) return;
-            
             Console.WriteLine("Options");
             
             foreach (var option in _command.Options)
