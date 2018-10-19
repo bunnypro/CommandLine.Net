@@ -4,17 +4,17 @@ using System.Reflection;
 
 namespace Bunnypro.CommandLine.Commands.Reflection
 {
-    internal sealed class ExecutionMethodParameterInfo
+    internal sealed class ExecutableMethodParameterInfo
     {
         private readonly ParameterInfo _parameter;
 
-        public ExecutionMethodParameterInfo(ExecutionMethodInfo method, ParameterInfo parameter)
+        public ExecutableMethodParameterInfo(ExecutableMethodInfo method, ParameterInfo parameter)
         {
             Method = method;
             _parameter = parameter;
         }
         
-        public ExecutionMethodInfo Method { get; }
+        public ExecutableMethodInfo Method { get; }
 
         public object Name => _parameter.Name;
         public Type Type => _parameter.ParameterType;

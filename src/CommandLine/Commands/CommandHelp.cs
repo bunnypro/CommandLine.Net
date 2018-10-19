@@ -33,7 +33,7 @@ namespace Bunnypro.CommandLine.Commands
         {
             Console.WriteLine("Usage");
 
-            foreach (var method in _commandInfo.ExecutionMethods)
+            foreach (var method in _commandInfo.ExecutableMethods)
             {
                 var args = method.IsAcceptOptions ?
                     " [options]" :

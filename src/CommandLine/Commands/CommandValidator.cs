@@ -40,13 +40,13 @@ namespace Bunnypro.CommandLine.Commands
         {
             var reflection = new CommandInfo(command);
 
-            if (!reflection.HasExecutionMethod)
+            if (!reflection.HasExecutableMethod)
                 throw new MissingExecutionMethodException(command);
 
-            if (reflection.HasExecutionMethodConflict)
+            if (reflection.HasExecutableMethodConflict)
                 throw new ExecutionMethodConflictException(command);
 
-            foreach (var method in reflection.ExecutionMethods)
+            foreach (var method in reflection.ExecutableMethods)
             {
                 if (method.IsAcceptOptions && !method.Parameters.First().IsOptions)
                     throw new ExecutionMethodParameterOrderException(method);

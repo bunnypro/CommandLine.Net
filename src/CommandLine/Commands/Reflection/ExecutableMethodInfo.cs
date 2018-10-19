@@ -4,24 +4,26 @@ using System.Reflection;
 
 namespace Bunnypro.CommandLine.Commands.Reflection
 {
-    internal sealed class ExecutionMethodInfo
+    internal sealed class ExecutableMethodInfo
     {
-        public ExecutionMethodInfo(Command command, MethodInfo method)
+        public ExecutableMethodInfo(Command command, MethodInfo method)
         {
             Command = command;
-            Parameters = method.GetParameters().Select(p => new ExecutionMethodParameterInfo(this, p)).ToList();
+            ExecutableMethod = method;
+            Parameters = method.GetParameters().Select(p => new ExecutableMethodParameterInfo(this, p)).ToList();
         }
         
         public Command Command { get; }
+        public MethodInfo ExecutableMethod { get; }
 
-        public IEnumerable<ExecutionMethodParameterInfo> Parameters { get; }
-        public IEnumerable<ExecutionMethodParameterInfo> Arguments => Parameters.Where(p => p.IsArgument);
+        public IEnumerable<ExecutableMethodParameterInfo> Parameters { get; }
+        public IEnumerable<ExecutableMethodParameterInfo> Arguments => Parameters.Where(p => p.IsArgument);
 
         public bool HasParameter => Parameters.Any();
         public bool HasArgument => Arguments.Any();
         public bool IsAcceptOptions => Parameters.Any(p => p.IsOptions);
 
-        public bool Conflict(ExecutionMethodInfo other)
+        public bool Conflict(ExecutableMethodInfo other)
         {
             if (other == null)
                 return false;

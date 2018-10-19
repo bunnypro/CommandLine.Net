@@ -7,13 +7,13 @@ namespace Bunnypro.CommandLine.Commands.Reflection
     {
         public CommandInfo(Command command)
         {
-            ExecutionMethods = command.GetType().GetMethods().Where(m => "Execute".Equals(m.Name))
-                .Select(m => new ExecutionMethodInfo(command, m)).ToList();
+            ExecutableMethods = command.GetType().GetMethods().Where(m => "Execute".Equals(m.Name))
+                .Select(m => new ExecutableMethodInfo(command, m)).ToList();
         }
 
-        public IEnumerable<ExecutionMethodInfo> ExecutionMethods { get; }
-        
-        public bool HasExecutionMethodConflict => ExecutionMethods.Any(m => ExecutionMethods.Any(m.Conflict));
-        public bool HasExecutionMethod => ExecutionMethods.Any();
+        public IEnumerable<ExecutableMethodInfo> ExecutableMethods { get; }
+
+        public bool HasExecutableMethodConflict => ExecutableMethods.Any(m => ExecutableMethods.Any(m.Conflict));
+        public bool HasExecutableMethod => ExecutableMethods.Any();
     }
 }

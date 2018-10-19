@@ -36,9 +36,8 @@ namespace Bunnypro.CommandLine
             }
 
             var commandInfo = new CommandInfo(command);
-            if (!commandInfo.HasExecutionMethod) throw new Exception("Command cannot be executed.");
-            
-            // find match execution method or show help
+            if (!commandInfo.HasExecutableMethod) throw new Exception("Command cannot be executed.");
+
 
             return command.ShowHelp(names);
         }

@@ -5,9 +5,9 @@ namespace Bunnypro.CommandLine.Commands.InternalExceptions
 {
     internal sealed class UnexpectedOptionsParameter : Exception
     {
-        public ExecutionMethodInfo Method { get; }
+        public ExecutableMethodInfo Method { get; }
 
-        public UnexpectedOptionsParameter(ExecutionMethodInfo method)
+        public UnexpectedOptionsParameter(ExecutableMethodInfo method)
         {
             Method = method;
         }

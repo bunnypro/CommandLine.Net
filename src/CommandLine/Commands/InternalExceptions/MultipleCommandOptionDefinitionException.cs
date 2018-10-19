@@ -5,9 +5,9 @@ namespace Bunnypro.CommandLine.Commands.InternalExceptions
 {
     internal sealed class MultipleCommandOptionDefinitionException : Exception
     {
-        public ExecutionMethodInfo Method { get; }
+        public ExecutableMethodInfo Method { get; }
 
-        public MultipleCommandOptionDefinitionException(ExecutionMethodInfo method)
+        public MultipleCommandOptionDefinitionException(ExecutableMethodInfo method)
         {
             Method = method;
         }

@@ -5,9 +5,9 @@ namespace Bunnypro.CommandLine.Commands.InternalExceptions
 {
     internal sealed class ExecutionMethodParameterOrderException : Exception
     {
-        public ExecutionMethodInfo Method { get; }
+        public ExecutableMethodInfo Method { get; }
 
-        public ExecutionMethodParameterOrderException(ExecutionMethodInfo method)
+        public ExecutionMethodParameterOrderException(ExecutableMethodInfo method)
         {
             Method = method;
         }

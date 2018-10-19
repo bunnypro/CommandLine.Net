@@ -5,9 +5,9 @@ namespace Bunnypro.CommandLine.Commands.InternalExceptions
 {
     internal sealed class UnsupportedParameterTypeException : Exception
     {
-        public ExecutionMethodParameterInfo Parameter { get; }
+        public ExecutableMethodParameterInfo Parameter { get; }
 
-        public UnsupportedParameterTypeException(ExecutionMethodParameterInfo parameter)
+        public UnsupportedParameterTypeException(ExecutableMethodParameterInfo parameter)
         {
             Parameter = parameter;
         }
