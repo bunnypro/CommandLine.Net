@@ -64,7 +64,7 @@ namespace Bunnypro.CommandLine.Commands
                         throw new UnexpectedOptionException(arg);
 
                     if (option.IsAcceptValue && args.Count < pos)
-                        throw new OptionValueRequiredException(option);
+                        throw new RequiredOptionValueException(option);
 
                     string value = null;
                     if (option.IsAcceptValue)
@@ -88,7 +88,7 @@ namespace Bunnypro.CommandLine.Commands
                         throw new UnexpectedOptionException($"-{lastOptionShortName}");
 
                     if (option.IsAcceptValue && args.Count < pos)
-                        throw new OptionValueRequiredException(option);
+                        throw new RequiredOptionValueException(option);
 
                     string value = null;
                     if (option.IsAcceptValue)
@@ -108,7 +108,7 @@ namespace Bunnypro.CommandLine.Commands
                         throw new UnexpectedOptionException($"-{optionShortName}");
                     
                     if (option.IsAcceptValue)
-                        throw new OptionValueRequiredException(option);
+                        throw new RequiredOptionValueException(option);
                     
                     options.Add(option, null);
                 }

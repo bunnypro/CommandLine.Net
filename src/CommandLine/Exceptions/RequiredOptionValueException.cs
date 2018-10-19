@@ -2,11 +2,11 @@ using Bunnypro.CommandLine.Commands;
 
 namespace Bunnypro.CommandLine.Exceptions
 {
-    public sealed class OptionValueRequiredException : CommandRuntimeException
+    public sealed class RequiredOptionValueException : CommandRuntimeException
     {
         public Option Option { get; }
 
-        public OptionValueRequiredException(Option option)
+        public RequiredOptionValueException(Option option)
         {
             Option = option;
         }
