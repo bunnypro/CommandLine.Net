@@ -48,7 +48,7 @@ namespace Bunnypro.CommandLine
                         return method.Invoke(parameters);
                     }
                     
-                    Console.WriteLine("Invalid Command Usage Format");
+                    Console.WriteLine("Invalid Command Usage Format.");
                 }
                 catch (FormatException)
                 {
