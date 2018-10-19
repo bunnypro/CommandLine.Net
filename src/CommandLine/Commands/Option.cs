@@ -17,7 +17,7 @@ namespace Bunnypro.CommandLine.Commands
         
         public bool IsAcceptValue { get; set; }
 
-        public bool MultiValue
+        public bool IsMultiValue
         {
             get => _multiValue && IsAcceptValue;
             set

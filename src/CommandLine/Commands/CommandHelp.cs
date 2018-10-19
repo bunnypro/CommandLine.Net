@@ -73,7 +73,7 @@ namespace Bunnypro.CommandLine.Commands
             
             foreach (var option in _command.Options)
             {
-                var value = option.MultiValue ? ": Accept Multi Option Value" : option.IsAcceptValue ? ": Accept Value" : "";
+                var value = option.IsMultiValue ? ": Accept Multi Option Value" : option.IsAcceptValue ? ": Accept Value" : "";
                 Console.Write($"\t-{option.ShortName}");
                 Console.WriteLine($"  --{option.Name}{value}");
                 Console.WriteLine($"\t    {option.Description}");
