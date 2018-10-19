@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Bunnypro.CommandLine.Commands.Reflection;
@@ -6,7 +5,7 @@ using Bunnypro.CommandLine.Exceptions;
 
 namespace Bunnypro.CommandLine.Commands
 {
-    public class UserInputExtractor
+    internal sealed class UserInputExtractor
     {
         private readonly Command _command;
 
