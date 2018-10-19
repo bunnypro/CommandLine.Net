@@ -54,6 +54,9 @@ namespace Bunnypro.CommandLine
                 }
             }
 
+            var commandName = string.Join(" ", names);
+            new CommandHelp(commandName, command).Print();
+            return 1;
         }
     }
 }
