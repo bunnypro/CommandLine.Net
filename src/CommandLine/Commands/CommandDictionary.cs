@@ -8,10 +8,6 @@ namespace Bunnypro.CommandLine.Commands
     {
         private readonly Command _parent;
         private readonly IDictionary<string, Type> _commands = new Dictionary<string, Type>();
-
-        public CommandDictionary()
-        {
-        }
         
         public CommandDictionary(Command parent)
         {

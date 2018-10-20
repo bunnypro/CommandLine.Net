@@ -6,6 +6,6 @@ namespace Bunnypro.CommandLine.Commands
     {
         public virtual string Description => "No Command Description";
         public virtual IEnumerable<Option> Options => new Option[] { };
-        public virtual CommandDictionary Commands => new CommandDictionary();
+        public virtual CommandDictionary Commands => new CommandDictionary(this);
     }
 }
