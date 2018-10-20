@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Bunnypro.CommandLine.Commands.Reflection;
@@ -132,6 +133,24 @@ namespace Bunnypro.CommandLine.Commands
                 throw new MultipleOptionException(option);
 
             options.Add(option, value);
+        }
+
+        public object[] FormatParametersFor(ExecutableMethodInfo method)
+        {
+            if (method == null)
+                return new object[]{ };
+            
+            var methodParametersType = method.Parameters.Select(p => p.Type).ToList();
+            
+            return (
+                method.IsAcceptOptions && !HasOptions ?
+                    ParametersWithOption :
+                    Parameters
+            ).Select((param, i) =>
+                param.Value is IConvertible ?
+                    Convert.ChangeType(param.Value, methodParametersType[i]) :
+                    param.Value
+            ).ToArray();
         }
     }
 }

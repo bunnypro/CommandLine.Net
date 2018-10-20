@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Bunnypro.CommandLine.Commands;
-using Bunnypro.CommandLine.Commands.Reflection;
 
 namespace Bunnypro.CommandLine
 {
@@ -33,18 +32,18 @@ namespace Bunnypro.CommandLine
             }
 
             CommandValidator.Validate(command);
-            var commandInfo = new CommandInfo(command);
 
             if (commandArgs.Any())
             {
                 try
                 {
-                    var method = commandInfo.FindMatchExecutableMethodInfo(commandArgs, out var parameters);
+                    var input = new UserInputExtractor(command, commandArgs);
+                    var finder = new ExecutableMethodFinder(command, input);
+                    var method = finder.ExecutableMethod;
+                    var parameters = input.FormatParametersFor(method);
                     
                     if (method != null)
-                    {
                         return method.Invoke(parameters);
-                    }
                     
                     Console.WriteLine("Invalid Command Usage Format.");
                 }
