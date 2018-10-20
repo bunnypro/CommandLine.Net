@@ -15,5 +15,17 @@ namespace Bunnypro.CommandLine.Commands.Reflection
 
         public bool HasExecutableMethodConflict => ExecutableMethods.Any(m => ExecutableMethods.Any(m.Conflict));
         public bool HasExecutableMethod => ExecutableMethods.Any();
+
+        public ExecutableMethodInfo FindExecutableMethodFor(InputExtractor input)
+        {
+            return ExecutableMethods.FirstOrDefault(m =>
+                       m.HasParameter == input.HasParameter &&
+                       m.IsAcceptOptions == input.HasOptions &&
+                       m.Parameters.Count() == input.Parameters.Count()
+                   ) ?? ExecutableMethods.FirstOrDefault(m =>
+                       m.HasParameter == input.HasParameter &&
+                       m.Arguments.Count() == input.Arguments.Count()
+                   );
+        }
     }
 }

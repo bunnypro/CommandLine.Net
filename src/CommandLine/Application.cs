@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Bunnypro.CommandLine.Commands;
+using Bunnypro.CommandLine.Commands.Reflection;
 
 namespace Bunnypro.CommandLine
 {
@@ -37,9 +38,9 @@ namespace Bunnypro.CommandLine
             {
                 try
                 {
+                    var commandInfo = new CommandInfo(command);
                     var input = new InputExtractor(command, commandArgs);
-                    var finder = new ExecutableMethodFinder(command, input);
-                    var method = finder.ExecutableMethod;
+                    var method = commandInfo.FindExecutableMethodFor(input);
 
                     if (method != null)
                     {
