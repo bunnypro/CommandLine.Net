@@ -40,11 +40,13 @@ namespace Bunnypro.CommandLine
                     var input = new UserInputExtractor(command, commandArgs);
                     var finder = new ExecutableMethodFinder(command, input);
                     var method = finder.ExecutableMethod;
-                    var parameters = input.FormatParametersFor(method);
-                    
+
                     if (method != null)
+                    {
+                        var parameters = input.FormatParametersFor(method);
                         return method.Invoke(parameters);
-                    
+                    }
+
                     Console.WriteLine("Invalid Command Usage Format.");
                 }
                 catch (FormatException)
