@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Bunnypro.CommandLine.Commands.InternalExceptions;
 using Bunnypro.CommandLine.Commands.Reflection;
+using Bunnypro.CommandLine.Exceptions;
 
 namespace Bunnypro.CommandLine.Commands
 {
@@ -38,6 +39,18 @@ namespace Bunnypro.CommandLine.Commands
         
         public static void Validate(Command command)
         {
+            if (command.Commands.Any())
+            {
+                foreach (var c in command.Commands)
+                {
+                    if (!c.Value.IsSubclassOf(typeof(Command)))
+                        throw new InvalidCommandTypeException(c.Value);
+
+                    if (command.GetType() == c.Value)
+                        throw new SelfNestingCommandException(c.Value);
+                }
+            }
+            
             var reflection = new CommandInfo(command);
 
             if (!reflection.HasExecutableMethod)

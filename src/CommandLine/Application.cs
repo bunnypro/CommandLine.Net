@@ -6,22 +6,19 @@ using Bunnypro.CommandLine.Commands.Reflection;
 
 namespace Bunnypro.CommandLine
 {
-    public sealed class Application
+    public sealed class Application<T> where T : Command, new()
     {
         private readonly string _name;
-        private readonly Command _root;
 
-        public Application(string name, Command root)
+        public Application(string name)
         {
-            CommandValidator.Validate(root);
             _name = name;
-            _root = root;
         }
 
         public int Run(IEnumerable<string> args)
         {
             var names = new List<string> {_name};
-            var command = _root;
+            var command = (Command) Activator.CreateInstance<T>();
             var commandArgs = args.ToList();
 
             while (commandArgs.Any() && !commandArgs[0].StartsWith("-"))
@@ -31,10 +28,11 @@ namespace Bunnypro.CommandLine
                     break;
 
                 names.Add(child);
-                command = command.Commands[child];
+                command = (Command) Activator.CreateInstance(command.Commands[child]);
                 commandArgs = commandArgs.Skip(1).ToList();
             }
 
+            CommandValidator.Validate(command);
             var commandInfo = new CommandInfo(command);
 
             if (commandArgs.Any())

@@ -19,8 +19,7 @@ namespace Bunnypro.CommandLine.Commands
 
         public void Print()
         {
-            Console.WriteLine($"Show help for: {_name}");
-            Console.WriteLine($"\tDescription: {_command.Description}");
+            Console.WriteLine(_command.Description);
             Console.WriteLine();
             
             PrintUsage();
@@ -69,7 +68,7 @@ namespace Bunnypro.CommandLine.Commands
 
             foreach (var command in _command.Commands)
             {
-                Console.WriteLine($"\t{command.Key}: {command.Value.Description}");
+                Console.WriteLine($"\t{command.Key}: {((Command) Activator.CreateInstance(command.Value)).Description}");
             }
         }
 
@@ -79,10 +78,10 @@ namespace Bunnypro.CommandLine.Commands
             
             foreach (var option in _command.Options)
             {
-                var value = option.IsMultiValue ? ": Accept Multi Option Value" : option.IsAcceptValue ? ": Accept Value" : "";
+                var value = option.IsMultiValue ? " Accept Multi Option Value" : option.IsAcceptValue ? " Accept Value" : "";
                 Console.Write($"\t-{option.ShortName}");
                 Console.WriteLine($"  --{option.Name}{value}");
-                Console.WriteLine($"\t    {option.Description}");
+                Console.WriteLine($"\t      {option.Description}");
             }
         }
     }
