@@ -37,7 +37,7 @@ namespace Bunnypro.CommandLine
             {
                 try
                 {
-                    var input = new UserInputExtractor(command, commandArgs);
+                    var input = new InputExtractor(command, commandArgs);
                     var finder = new ExecutableMethodFinder(command, input);
                     var method = finder.ExecutableMethod;
 

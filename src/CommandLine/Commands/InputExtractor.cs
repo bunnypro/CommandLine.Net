@@ -6,11 +6,11 @@ using Bunnypro.CommandLine.Exceptions;
 
 namespace Bunnypro.CommandLine.Commands
 {
-    internal sealed class UserInputExtractor
+    internal sealed class InputExtractor
     {
         private readonly Command _command;
 
-        public UserInputExtractor(Command command, IEnumerable<string> userInputArgs)
+        public InputExtractor(Command command, IEnumerable<string> userInputArgs)
         {
             _command = command;
             Options = ExtractOptions(userInputArgs, out var arguments);

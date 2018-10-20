@@ -5,10 +5,10 @@ namespace Bunnypro.CommandLine.Commands
 {
     internal sealed class ExecutableMethodFinder
     {
-        private readonly UserInputExtractor _input;
+        private readonly InputExtractor _input;
         private readonly CommandInfo _commandInfo;
 
-        public ExecutableMethodFinder(Command command, UserInputExtractor input)
+        public ExecutableMethodFinder(Command command, InputExtractor input)
         {
             _input = input;
             _commandInfo = new CommandInfo(command);
