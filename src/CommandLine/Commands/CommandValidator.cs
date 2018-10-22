@@ -50,11 +50,8 @@ namespace Bunnypro.CommandLine.Commands
                         throw new SelfNestingCommandException(c.Value);
                 }
             }
-            
-            var reflection = new CommandInfo(command);
 
-            if (!reflection.HasExecutableMethod)
-                throw new MissingExecutableMethodException(command);
+            var reflection = new CommandInfo(command);
 
             if (reflection.HasExecutableMethodConflict)
                 throw new ExecutableMethodConflictException(command);
