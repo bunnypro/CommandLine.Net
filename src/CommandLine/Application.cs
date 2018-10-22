@@ -34,26 +34,23 @@ namespace Bunnypro.CommandLine
 
             CommandValidator.Validate(command);
 
-            if (commandArgs.Any())
+            try
             {
-                try
-                {
-                    var commandInfo = new CommandInfo(command);
-                    var input = new InputExtractor(command, commandArgs);
-                    var method = commandInfo.FindExecutableMethodFor(input);
+                var commandInfo = new CommandInfo(command);
+                var input = new InputExtractor(command, commandArgs);
+                var method = commandInfo.FindExecutableMethodFor(input);
 
-                    if (method != null)
-                    {
-                        var parameters = input.FormatParametersFor(method);
-                        return method.Invoke(parameters);
-                    }
-
-                    Console.WriteLine("Invalid Command Usage Format.");
-                }
-                catch (FormatException)
+                if (method != null)
                 {
-                    Console.WriteLine("Invalid Argument Type.");
+                    var parameters = input.FormatParametersFor(method);
+                    return method.Invoke(parameters);
                 }
+
+                Console.WriteLine("Invalid Command Usage Format.");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid Argument Type.");
             }
 
             var commandName = string.Join(" ", names);
