@@ -33,7 +33,7 @@ namespace Bunnypro.CommandLine.Commands
                     Console.WriteLine();
                 }
 
-                if (_command.Options.Any())
+                if (_command.Options.Any()  && _commandInfo.HasExecutableMethodWithOptions)
                 {
                     PrintOptions();
                     Console.WriteLine();
