@@ -21,12 +21,12 @@ namespace Bunnypro.CommandLine.Commands
         {
             Console.WriteLine(_command.Description);
             Console.WriteLine();
-            
+
             if (_commandInfo.HasExecutableMethod || _command.Commands.Any())
             {
                 PrintUsage();
                 Console.WriteLine();
-                
+
                 if (_command.Commands.Any())
                 {
                     PrintCommands();
@@ -50,7 +50,7 @@ namespace Bunnypro.CommandLine.Commands
                 var args = method.IsAcceptOptions ?
                     " [options]" :
                     "";
-                
+
                 args += method.Arguments.Aggregate("", (argument, parameter) =>
                 {
                     argument += $" {{({parameter.TypeName}) {parameter.Name}}}";
@@ -78,7 +78,7 @@ namespace Bunnypro.CommandLine.Commands
         public void PrintOptions()
         {
             Console.WriteLine("Options");
-            
+
             foreach (var option in _command.Options)
             {
                 var value = option.IsMultiValue ? " Accept Multi Option Value" : option.IsAcceptValue ? " Accept Value" : "";

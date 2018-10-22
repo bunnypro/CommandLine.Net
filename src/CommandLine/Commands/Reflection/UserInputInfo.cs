@@ -8,7 +8,7 @@ namespace Bunnypro.CommandLine.Commands.Reflection
         {
             Value = value;
         }
-        
+
         public object Value { get; }
 
         public bool IsOptions => Value.GetType() == typeof(IDictionary<Option, object>);

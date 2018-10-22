@@ -13,7 +13,7 @@ namespace Bunnypro.CommandLine.Commands.Reflection
             ExecutableMethod = method;
             Parameters = method.GetParameters().Select(p => new ExecutableMethodParameterInfo(this, p)).ToList();
         }
-        
+
         public Command Command { get; }
         public MethodInfo ExecutableMethod { get; }
 
@@ -31,7 +31,7 @@ namespace Bunnypro.CommandLine.Commands.Reflection
 
             if (Equals(other))
                 return false;
-            
+
             if (IsAcceptOptions && !other.IsAcceptOptions || !IsAcceptOptions && other.IsAcceptOptions)
                 return false;
 

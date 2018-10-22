@@ -17,7 +17,7 @@ namespace Bunnypro.CommandLine.Commands
             typeof(char),
             typeof(object)
         };
-        
+
         public static bool TryValidate(Command command)
         {
             try
@@ -36,7 +36,7 @@ namespace Bunnypro.CommandLine.Commands
 
             return true;
         }
-        
+
         public static void Validate(Command command)
         {
             if (command.Commands.Any())
@@ -60,10 +60,10 @@ namespace Bunnypro.CommandLine.Commands
             {
                 if (method.IsAcceptOptions && !method.Parameters.First().IsOptions)
                     throw new ExecutableMethodParameterOrderException(method);
-                    
+
                 if (method.IsAcceptOptions && !command.Options.Any())
                     throw new UndefinedCommandOptionsException(method);
-                
+
                 if (method.IsAcceptOptions && method.Parameters.Count(p => p.IsOptions) > 1)
                     throw new MultipleOptionsDefinitionException(method);
 

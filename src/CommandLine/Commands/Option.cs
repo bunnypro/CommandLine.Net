@@ -10,11 +10,11 @@ namespace Bunnypro.CommandLine.Commands
         {
             Name = name;
         }
-        
+
         public string Name { get; }
         public char? ShortName { get; set; }
         public string Description { get; set; } = "No Description";
-        
+
         public bool IsAcceptValue { get; set; }
 
         public bool IsMultiValue

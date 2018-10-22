@@ -103,13 +103,13 @@ namespace Bunnypro.CommandLine.Commands
                 foreach (var optionShortName in optionName.Take(optionName.Length - 1))
                 {
                     option = _command.Options.FirstOrDefault(o => optionShortName.Equals(o.ShortName));
-                    
+
                     if (option == null)
                         throw new UnexpectedOptionException($"-{optionShortName}");
-                    
+
                     if (option.IsAcceptValue)
                         throw new RequiredOptionValueException(option);
-                    
+
                     options.Add(option, null);
                 }
             }
@@ -139,9 +139,9 @@ namespace Bunnypro.CommandLine.Commands
         {
             if (method == null)
                 return new object[]{ };
-            
+
             var methodParametersType = method.Parameters.Select(p => p.Type).ToList();
-            
+
             return (
                 method.IsAcceptOptions && !HasOptions ?
                     ParametersWithOption :
