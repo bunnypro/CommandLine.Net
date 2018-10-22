@@ -18,7 +18,7 @@ namespace Bunnypro.CommandLine.Examples.Simple
             Console.WriteLine(first);
             Console.WriteLine(second);
         }
-        
+
         public void Execute(string first, object second)
         {
             Console.WriteLine(first);
