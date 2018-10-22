@@ -22,19 +22,22 @@ namespace Bunnypro.CommandLine.Commands
             Console.WriteLine(_command.Description);
             Console.WriteLine();
             
-            PrintUsage();
-            Console.WriteLine();
-            
-            if (_command.Commands.Any())
+            if (_commandInfo.HasExecutableMethod || _command.Commands.Any())
             {
-                PrintCommands();
+                PrintUsage();
                 Console.WriteLine();
-            }
+                
+                if (_command.Commands.Any())
+                {
+                    PrintCommands();
+                    Console.WriteLine();
+                }
 
-            if (_command.Options.Any())
-            {
-                PrintOptions();
-                Console.WriteLine();
+                if (_command.Options.Any())
+                {
+                    PrintOptions();
+                    Console.WriteLine();
+                }
             }
         }
 
